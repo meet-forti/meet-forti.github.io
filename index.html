@@ -186,17 +186,21 @@
 
         /* --- 5. WORK / PROJECTS --- */
         .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-        }
+    display: grid;/* This command creates 3 columns that wrap automatically on mobile */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px; /* Space between the boxes */
+    max-width: 1400px; /* Prevents cards from getting too wide on huge screens */
+    margin: 0 auto; /* Centers the whole grid on the page */
 
         .project-card {
-            background: var(--forti-dark-accent);
-            border-radius: 4px;
-            overflow: hidden;
-            group: 1;
-        }
+    background: var(--forti-dark-accent);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column; /* Ensures footer/button stays at bottom */
+    transition: var(--transition);
+    height: 100%; /* Forces equal height for all cards */
 
         .project-img {
             height: 200px;
@@ -271,7 +275,19 @@
             .btn-cta { display: none; }
         }
 
-        /* New Button Style for Cards */
+        .project-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--forti-primary);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);}
+
+            .project-info {
+    padding: 30px;
+    flex-grow: 1; /* Pushes content to fill space */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes button to the very bottom */
+}
+            
 .project-btn {
     display: inline-block;
     margin-top: 20px;
@@ -453,3 +469,4 @@
 </body>
 
 </html>
+
