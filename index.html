@@ -270,8 +270,42 @@
             nav { display: none; } /* Add JS hamburger menu for full implementation */
             .btn-cta { display: none; }
         }
+
+        /* New Button Style for Cards */
+.project-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--forti-light);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transition);
+}
+
+.project-btn:hover {
+    background: var(--forti-primary);
+    border-color: var(--forti-primary);
+}
+
+/* WIP (Work In Progress) Badge */
+.wip-badge {
+    background: #ffb700; /* Amber color for warning/progress */
+    color: #000;
+    font-size: 0.65rem;
+    padding: 2px 6px;
+    border-radius: 2px;
+    margin-left: 10px;
+    font-weight: 700;
+    vertical-align: middle;
+}
+
+        
     </style>
 </head>
+
+    
 <body>
 
     <header>
@@ -337,50 +371,45 @@
         </div>
     </section>
 
-    <section id="work" class="section">
-        <div class="section-title">
-            <h2>Selected Works</h2>
-            <p>Engineered for impact.</p>
+<div class="project-grid">
+    
+    <div class="project-card">
+        <div class="project-img" style="background: linear-gradient(135deg, #0c5bab, #6b2cf5);">
+            </div>
+        <div class="project-info">
+            <span class="project-tag">Forti Design</span>
+            <h3>Visual Identity Suite</h3>
+            <p>Selected Work: High-CTR thumbnails, event posters, and vector logos designed for digital impact.</p>
+            
+            <a href="design-works.html" class="project-btn">View All Designs <i class="fas fa-arrow-right"></i></a>
         </div>
+    </div>
 
-        <div class="project-grid">
-            <div class="project-card">
-                <div class="project-img" style="background: linear-gradient(45deg, #0c5bab, #000);">
-                    </div>
-                <div class="project-info">
-                    <span class="project-tag">Forti Security AI</span>
-                    <a href="#">
-                    <h3>CyberGuard Dashboard</h3>
-                    </a>
-                    <p>A real-time threat monitoring UI designed for enterprise network administrators.</p>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-img" style="background: linear-gradient(45deg, #1c8fed, #151515);">
-                     </div>
-                <div class="project-info">
-                    <span class="project-tag">Forti Design</span>
-                    <a href="#">
-                    <h3>Neon Brand Identity</h3>
-                    </a>
-                    <p>Geometric rebranding for a fintech startup focusing on high-contrast minimalism.</p>
-                </div>
-            </div>
-
-             <div class="project-card">
-                <div class="project-img" style="background: linear-gradient(45deg, #333, #000);">
-                     </div>
-                <div class="project-info">
-                    <span class="project-tag">Forti Tech</span>
-                    <a href="#">
-                    <h3>BusApp Architecture</h3>
-                    </a>
-                    <p>Java-based booking system logic emphasizing efficiency and data integrity.</p>
-                </div>
-            </div>
+    <div class="project-card">
+        <div class="project-img" style="background: linear-gradient(135deg, #151515, #00d26a);">
+             </div>
+        <div class="project-info">
+            <span class="project-tag">Forti Tech</span>
+            <h3>System Architecture</h3>
+            <p>Selected Work: BusApp Logic. Efficient algorithms and data management using Java & C.</p>
+            
+            <a href="tech-works.html" class="project-btn">View Codebase <i class="fas fa-arrow-right"></i></a>
         </div>
-    </section>
+    </div>
+
+     <div class="project-card">
+        <div class="project-img" style="background: linear-gradient(135deg, #0a0a0a, #444);">
+             </div>
+        <div class="project-info">
+            <span class="project-tag">Forti Security AI</span>
+            <h3>Threat Defense Idea <span class="wip-badge">WIP</span></h3>
+            <p>Concept: A theoretical security system for real-time network monitoring. Currently in R&D phase.</p>
+            
+            <a href="security-works.html" class="project-btn">View Concepts <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+
+</div>
 
     <section id="labs" class="section" style="background: #0f0f0f;">
         <div class="section-title">
@@ -422,4 +451,5 @@
         });
     </script>
 </body>
+
 </html>
