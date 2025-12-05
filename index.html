@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FORTI Ecosystem | Precision. Geometry. Future.</title>
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         /* --- 1. CORE VARIABLES & RESET --- */
         :root {
-            --forti-primary: #0c5bab;       /* Deep Tech Blue */
-            --forti-secondary: #1c8fed;     /* Bright Future Blue */
-            --forti-dark: #0a0a0a;          /* Geometric Black */
-            --forti-dark-accent: #151515;   /* Card Background */
-            --forti-light: #f4f4f4;         /* Clean White */
+            --forti-primary: #0c5bab;
+            /* Deep Tech Blue */
+            --forti-secondary: #1c8fed;
+            /* Bright Future Blue */
+            --forti-dark: #0a0a0a;
+            /* Geometric Black */
+            --forti-dark-accent: #151515;
+            /* Card Background */
+            --forti-light: #f4f4f4;
+            /* Clean White */
             --forti-gray: #888888;
             --font-main: 'Poppins', sans-serif;
             --transition: all 0.3s ease;
@@ -36,8 +42,15 @@
             overflow-x: hidden;
         }
 
-        a { text-decoration: none; color: inherit; transition: var(--transition); }
-        ul { list-style: none; }
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
 
         /* --- 2. HEADER & NAV --- */
         header {
@@ -51,7 +64,7 @@
             z-index: 1000;
             background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .logo {
@@ -60,10 +73,17 @@
             letter-spacing: 2px;
             color: var(--forti-light);
         }
-        .logo span { color: var(--forti-secondary); }
 
-        nav ul { display: flex; gap: 30px; align-items: center; }
-        
+        .logo span {
+            color: var(--forti-secondary);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
         nav a {
             font-size: 0.9rem;
             font-weight: 400;
@@ -72,7 +92,10 @@
             letter-spacing: 1px;
         }
 
-        nav a:hover, nav a.active { color: var(--forti-light); }
+        nav a:hover,
+        nav a.active {
+            color: var(--forti-light);
+        }
 
         .btn-cta {
             background-color: var(--forti-primary);
@@ -136,16 +159,24 @@
         }
 
         /* --- 4. ECOSYSTEM (SERVICES) --- */
-        .section { padding: 100px 10%; }
-        
+        .section {
+            padding: 100px 10%;
+        }
+
         .section-title {
             margin-bottom: 60px;
             border-left: 4px solid var(--forti-primary);
             padding-left: 20px;
         }
 
-        .section-title h2 { font-size: 2.5rem; }
-        .section-title p { color: var(--forti-gray); margin-top: 5px; }
+        .section-title h2 {
+            font-size: 2.5rem;
+        }
+
+        .section-title p {
+            color: var(--forti-gray);
+            margin-top: 5px;
+        }
 
         .ecosystem-grid {
             display: grid;
@@ -156,7 +187,7 @@
         .division-card {
             background: var(--forti-dark-accent);
             padding: 40px 30px;
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             transition: var(--transition);
             position: relative;
             overflow: hidden;
@@ -186,21 +217,29 @@
 
         /* --- 5. WORK / PROJECTS --- */
         .project-grid {
-    display: grid;/* This command creates 3 columns that wrap automatically on mobile */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px; /* Space between the boxes */
-    max-width: 1400px; /* Prevents cards from getting too wide on huge screens */
-    margin: 0 auto; /* Centers the whole grid on the page */
+            display: grid;
+            /* This command creates 3 columns that wrap automatically on mobile */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            /* Space between the boxes */
+            max-width: 1400px;
+            /* Prevents cards from getting too wide on huge screens */
+            margin: 0 auto;
+            /* Centers the whole grid on the page */
+        }
 
         .project-card {
-    background: var(--forti-dark-accent);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 4px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column; /* Ensures footer/button stays at bottom */
-    transition: var(--transition);
-    height: 100%; /* Forces equal height for all cards */
+            background: var(--forti-dark-accent);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            /* Ensures footer/button stays at bottom */
+            transition: var(--transition);
+            height: 100%;
+            /* Forces equal height for all cards */
+        }
 
         .project-img {
             height: 200px;
@@ -212,11 +251,15 @@
             font-weight: bold;
             position: relative;
         }
-        
-        /* Placeholder styling for images */
-        .project-img::before { content: 'PROJECT PREVIEW'; }
 
-        .project-info { padding: 25px; }
+        /* Placeholder styling for images */
+        .project-img::before {
+            content: 'PROJECT PREVIEW';
+        }
+
+        .project-info {
+            padding: 25px;
+        }
 
         .project-tag {
             font-size: 0.75rem;
@@ -228,8 +271,14 @@
             display: block;
         }
 
-        .project-info h3 { margin-bottom: 10px; }
-        .project-info p { font-size: 0.9rem; color: var(--forti-gray); }
+        .project-info h3 {
+            margin-bottom: 10px;
+        }
+
+        .project-info p {
+            font-size: 0.9rem;
+            color: var(--forti-gray);
+        }
 
         /* --- 6. TECH STACK & FOOTER --- */
         .tech-stack {
@@ -238,7 +287,7 @@
             flex-wrap: wrap;
             margin-top: 20px;
         }
-        
+
         .tech-item {
             border: 1px solid var(--forti-gray);
             padding: 5px 15px;
@@ -251,16 +300,21 @@
             background: #050505;
             padding: 50px 10%;
             text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        footer h2 { margin-bottom: 20px; }
-        
+        footer h2 {
+            margin-bottom: 20px;
+        }
+
         .footer-links a {
             margin: 0 15px;
             color: var(--forti-gray);
         }
-        .footer-links a:hover { color: var(--forti-secondary); }
+
+        .footer-links a:hover {
+            color: var(--forti-secondary);
+        }
 
         .copyright {
             margin-top: 40px;
@@ -270,58 +324,69 @@
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            nav { display: none; } /* Add JS hamburger menu for full implementation */
-            .btn-cta { display: none; }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            nav {
+                display: none;
+            }
+
+            /* Add JS hamburger menu for full implementation */
+            .btn-cta {
+                display: none;
+            }
         }
 
         .project-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--forti-primary);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);}
+            transform: translateY(-5px);
+            border-color: var(--forti-primary);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
 
-            .project-info {
-    padding: 30px;
-    flex-grow: 1; /* Pushes content to fill space */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Pushes button to the very bottom */
-}
-            
-.project-btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: var(--forti-light);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: var(--transition);
-}
+        .project-info {
+            padding: 30px;
+            flex-grow: 1;
+            /* Pushes content to fill space */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            /* Pushes button to the very bottom */
+        }
 
-.project-btn:hover {
-    background: var(--forti-primary);
-    border-color: var(--forti-primary);
-}
+        .project-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--forti-light);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
 
-/* WIP (Work In Progress) Badge */
-.wip-badge {
-    background: #ffb700; /* Amber color for warning/progress */
-    color: #000;
-    font-size: 0.65rem;
-    padding: 2px 6px;
-    border-radius: 2px;
-    margin-left: 10px;
-    font-weight: 700;
-    vertical-align: middle;
-}
+        .project-btn:hover {
+            background: var(--forti-primary);
+            border-color: var(--forti-primary);
+        }
 
-        
+        /* WIP (Work In Progress) Badge */
+        .wip-badge {
+            background: #ffb700;
+            /* Amber color for warning/progress */
+            color: #000;
+            font-size: 0.65rem;
+            padding: 2px 6px;
+            border-radius: 2px;
+            margin-left: 10px;
+            font-weight: 700;
+            vertical-align: middle;
+        }
     </style>
 </head>
 
-    
+
 <body>
 
     <header>
@@ -353,7 +418,7 @@
             <div class="division-card">
                 <i class="fas fa-pen-nib"></i>
                 <h3>FORTI DESIGN</h3>
-                <p>Visual identity, branding systems, poster design, thumbnails, and everything creative. 
+                <p>Visual identity, branding systems, poster design, thumbnails, and everything creative.
                     Clean, modern, and expressive design language with geometric clarity.</p>
             </div>
 
@@ -361,21 +426,21 @@
             <div class="division-card">
                 <i class="fas fa-code"></i>
                 <h3>FORTI TECH</h3>
-                <p>Software development, coding tools, and automation systems to streamline real-world tasks. 
+                <p>Software development, coding tools, and automation systems to streamline real-world tasks.
                     Built for performance and simplicity.</p>
             </div>
 
             <div class="division-card">
                 <i class="fas fa-shield-alt"></i>
                 <h3>FORTI SECURITY (Concept Stage)</h3>
-                <p>Future-first security concepts using AI and machine learning. No updates, 
+                <p>Future-first security concepts using AI and machine learning. No updates,
                     no scans — just real-time, intelligent protection that evolves on its own.</p>
             </div>
 
-             <div class="division-card">
+            <div class="division-card">
                 <i class="fas fa-bullseye"></i>
                 <h3>FORTI MEDIA</h3>
-                <p>A space for content creation — from video editing to visual storytelling, 
+                <p>A space for content creation — from video editing to visual storytelling,
                     crafted with consistency and clarity.</p>
             </div>
 
@@ -387,45 +452,45 @@
         </div>
     </section>
 
-<div class="project-grid">
-    
-    <div class="project-card">
-        <div class="project-img" style="background: linear-gradient(135deg, #0c5bab, #6b2cf5);">
+    <div class="project-grid">
+
+        <div class="project-card">
+            <div class="project-img" style="background: linear-gradient(135deg, #0c5bab, #6b2cf5);">
             </div>
-        <div class="project-info">
-            <span class="project-tag">Forti Design</span>
-            <h3>Visual Identity Suite</h3>
-            <p>Selected Work: High-CTR thumbnails, event posters, and vector logos designed for digital impact.</p>
-            
-            <a href="design-works.html" class="project-btn">View All Designs <i class="fas fa-arrow-right"></i></a>
-        </div>
-    </div>
+            <div class="project-info">
+                <span class="project-tag">Forti Design</span>
+                <h3>Visual Identity Suite</h3>
+                <p>Selected Work: High-CTR thumbnails, event posters, and vector logos designed for digital impact.</p>
 
-    <div class="project-card">
-        <div class="project-img" style="background: linear-gradient(135deg, #151515, #00d26a);">
-             </div>
-        <div class="project-info">
-            <span class="project-tag">Forti Tech</span>
-            <h3>System Architecture</h3>
-            <p>Selected Work: BusApp Logic. Efficient algorithms and data management using Java & C.</p>
-            
-            <a href="tech-works.html" class="project-btn">View Codebase <i class="fas fa-arrow-right"></i></a>
+                <a href="design-works.html" class="project-btn">View All Designs <i class="fas fa-arrow-right"></i></a>
+            </div>
         </div>
-    </div>
 
-     <div class="project-card">
-        <div class="project-img" style="background: linear-gradient(135deg, #0a0a0a, #444);">
-             </div>
-        <div class="project-info">
-            <span class="project-tag">Forti Security AI</span>
-            <h3>Threat Defense Idea <span class="wip-badge">WIP</span></h3>
-            <p>Concept: A theoretical security system for real-time network monitoring. Currently in R&D phase.</p>
-            
-            <a href="security-works.html" class="project-btn">View Concepts <i class="fas fa-arrow-right"></i></a>
+        <div class="project-card">
+            <div class="project-img" style="background: linear-gradient(135deg, #151515, #00d26a);">
+            </div>
+            <div class="project-info">
+                <span class="project-tag">Forti Tech</span>
+                <h3>System Architecture</h3>
+                <p>Selected Work: BusApp Logic. Efficient algorithms and data management using Java & C.</p>
+
+                <a href="tech-works.html" class="project-btn">View Codebase <i class="fas fa-arrow-right"></i></a>
+            </div>
         </div>
-    </div>
 
-</div>
+        <div class="project-card">
+            <div class="project-img" style="background: linear-gradient(135deg, #0a0a0a, #444);">
+            </div>
+            <div class="project-info">
+                <span class="project-tag">Forti Security AI</span>
+                <h3>Threat Defense Idea <span class="wip-badge">WIP</span></h3>
+                <p>Concept: A theoretical security system for real-time network monitoring. Currently in R&D phase.</p>
+
+                <a href="security-works.html" class="project-btn">View Concepts <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+
+    </div>
 
     <section id="labs" class="section" style="background: #0f0f0f;">
         <div class="section-title">
@@ -438,8 +503,8 @@
             <div class="tech-item">Java</div>
             <div class="tech-item">C</div>
             <div class="tech-item">Figma</div>
-            
-           
+
+
         </div>
     </section>
 
@@ -469,4 +534,3 @@
 </body>
 
 </html>
-
