@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Architecture | FORTI Tech</title>
+    <link rel="icon" href="FORTI tech.png" type="image/png">
+    <!-- Typography & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- 1. CORE VARIABLES (Same as Main Site) --- */
+        :root {
+            --forti-primary: #0c5bab;
+            --forti-secondary: #1c8fed;
+            --forti-dark: #0a0a0a;
+            --forti-dark-accent: #151515;
+            --forti-light: #f4f4f4;
+            --forti-gray: #888888;
+            --font-main: 'Poppins', sans-serif;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--forti-dark);
+            color: var(--forti-light);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        /* --- 2. HEADER --- */
+        header {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background: var(--forti-dark);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--forti-secondary);
+        }
+
+        .back-link {
+            font-size: 0.9rem;
+            color: var(--forti-gray);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .back-link:hover {
+            color: var(--forti-secondary);
+        }
+
+        /* --- 3. HERO --- */
+        .page-hero {
+            padding: 80px 5%;
+            text-align: center;
+            background: radial-gradient(circle at center, #111e2e 0%, var(--forti-dark) 70%);
+        }
+
+        .page-hero h1 {
+            font-size: 3rem;
+            background: linear-gradient(to right, #fff, var(--forti-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .page-hero p {
+            color: var(--forti-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- 4. STICKY CATEGORY NAV --- */
+        .category-nav {
+            position: sticky;
+            top: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 100;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .cat-link {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--forti-gray);
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+
+        .cat-link:hover,
+        .cat-link.active {
+            color: var(--forti-secondary);
+        }
+
+        /* --- 5. GALLERY SECTIONS --- */
+        .gallery-section {
+            padding: 80px 5%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        .section-header {
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-header i {
+            color: var(--forti-primary);
+            font-size: 1.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* --- GRID SYSTEM --- */
+        .work-grid {
+            display: grid;
+            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        }
+
+        /* CARD STYLING */
+        .work-item {
+            position: relative;
+            background: var(--forti-dark-accent);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            overflow: hidden;
+            group: 1;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            min-height: 300px;
+        }
+
+        .work-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--forti-secondary);
+        }
+
+        /* Tech Card Specifics */
+        .code-preview {
+            background-color: #1a1a1a;
+            color: #00d26a;
+            /* Console green */
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            font-size: 0.8rem;
+            height: 180px;
+            overflow: hidden;
+            border-bottom: 1px solid #222;
+            position: relative;
+        }
+
+        .code-preview::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: linear-gradient(to bottom, transparent, var(--forti-dark-accent));
+        }
+
+        .card-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--forti-light);
+        }
+
+        .card-info p {
+            font-size: 0.85rem;
+            color: var(--forti-gray);
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .tech-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-size: 0.7rem;
+            color: var(--forti-secondary);
+            border: 1px solid var(--forti-secondary);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+
+            .category-nav {
+                gap: 15px;
+                font-size: 0.8rem;
+            }
+
+            .work-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">FORTI<span>.</span>TECH</div>
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Home
+        </a>
+    </header>
+
+    <!-- HERO -->
+    <div class="page-hero">
+        <h1>Logic. Structure. Efficiency.</h1>
+        <p>FORTI TECH is the engineering backbone of the ecosystem. We don’t just write code; we architect systems. By
+            leveraging the robustness of Java and the low-level precision of C, we build software solutions that
+            prioritize speed, data integrity, and scalability.</p>
+        <p style="margin-top: 20px; font-style: italic; color: var(--forti-secondary);">"Code is not just syntax; it is
+            the language of modern infrastructure. Whether building a consumer app or a backend system, we adhere to
+            strict 'Clean Architecture' principles to ensure longevity and stability."</p>
+    </div>
+
+    <!-- STICKY NAV -->
+    <div class="category-nav">
+        <a href="#java" class="cat-link">Java</a>
+        <a href="#c" class="cat-link">C</a>
+    </div>
+
+    <!-- SECTION 1: JAVA -->
+    <section id="java" class="gallery-section">
+        <div class="section-header">
+            <i class="fab fa-java"></i>
+            <h2>Java Projects</h2>
+        </div>
+        <div class="work-grid">
+            <!-- Project 1 -->
+            <div class="work-item">
+                <div class="code-preview">
+                    class EnterpriseCore {<br>
+                    &nbsp;&nbsp;public static void main(String[] args) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;initSystem();<br>
+                    &nbsp;&nbsp;}<br>
+                    }
+                </div>
+                <div class="card-info">
+                    <h3>BusApp Architecture</h3>
+                    <p>A high-efficiency booking management system designed to streamline complex scheduling logistics.
+                    </p>
+                    <p style="margin-top: 10px; font-size: 0.8rem; color: #aaa;"><strong>Challenge:</strong> Eliminating
+                        redundancy in seat allocation.<br><strong>Solution:</strong> Robust Java framework with
+                        optimized algorithms for zero-conflict bookings.</p>
+                    <div class="tech-tags">
+                        <span class="tag">Java Enterprise</span>
+                        <span class="tag">SQL Integration</span>
+                        <span class="tag">OOP</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 2: C -->
+    <section id="c" class="gallery-section">
+        <div class="section-header">
+            <i class="fas fa-microchip"></i>
+            <div>
+                <h2>C Projects</h2>
+                <p style="font-size: 0.9rem; color: var(--forti-gray); margin-top: 5px; max-width: 600px;">"In an era of
+                    bloatware, we return to the metal. Our proficiency in C allows for manual memory management and
+                    hardware-level optimization, creating lightweight, high-performance modules where every byte
+                    counts."</p>
+            </div>
+        </div>
+        <div class="work-grid">
+            <!-- Content cleared as requested -->
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="text-align:center; padding: 40px; border-top: 1px solid #222; color: #666;">
+        <p>FORTI TECH DIVISION</p>
+    </footer>
+
+</body>
+
+</html>

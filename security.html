@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intelligent Defense | FORTI Security</title>
+    <link rel="icon" href="FORTI security.png" type="image/png">
+    <!-- Typography & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- 1. CORE VARIABLES (Same as Main Site) --- */
+        :root {
+            --forti-primary: #0c5bab;
+            --forti-secondary: #1c8fed;
+            --forti-dark: #0a0a0a;
+            --forti-dark-accent: #151515;
+            --forti-light: #f4f4f4;
+            --forti-gray: #888888;
+            --font-main: 'Poppins', sans-serif;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--forti-dark);
+            color: var(--forti-light);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        /* --- 2. HEADER --- */
+        header {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background: var(--forti-dark);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--forti-secondary);
+        }
+
+        .back-link {
+            font-size: 0.9rem;
+            color: var(--forti-gray);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .back-link:hover {
+            color: var(--forti-secondary);
+        }
+
+        /* --- 3. HERO --- */
+        .page-hero {
+            padding: 80px 5%;
+            text-align: center;
+            background: radial-gradient(circle at center, #111e2e 0%, var(--forti-dark) 70%);
+        }
+
+        .page-hero h1 {
+            font-size: 3rem;
+            background: linear-gradient(to right, #fff, var(--forti-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .page-hero p {
+            color: var(--forti-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- 4. STICKY CATEGORY NAV --- */
+        .category-nav {
+            position: sticky;
+            top: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 100;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .cat-link {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--forti-gray);
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+
+        .cat-link:hover,
+        .cat-link.active {
+            color: var(--forti-secondary);
+        }
+
+        /* --- 5. GALLERY SECTIONS --- */
+        .gallery-section {
+            padding: 80px 5%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        .section-header {
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-header i {
+            color: var(--forti-primary);
+            font-size: 1.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* --- GRID SYSTEM --- */
+        .work-grid {
+            display: grid;
+            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        }
+
+        /* CARD STYLING */
+        .work-item {
+            position: relative;
+            background: var(--forti-dark-accent);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            overflow: hidden;
+            group: 1;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            min-height: 300px;
+        }
+
+        .work-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--forti-secondary);
+        }
+
+        /* Security Card Specifics */
+        .security-visual {
+            height: 180px;
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid #222;
+        }
+
+        .security-visual i {
+            font-size: 3rem;
+            color: #333;
+            transition: var(--transition);
+        }
+
+        .work-item:hover .security-visual i {
+            color: var(--forti-secondary);
+            transform: scale(1.1);
+        }
+
+        /* Grid overlay effect for security feel */
+        .security-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(28, 143, 237, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(28, 143, 237, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.5;
+        }
+
+        .card-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--forti-light);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card-info p {
+            font-size: 0.85rem;
+            color: var(--forti-gray);
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .tech-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-size: 0.7rem;
+            color: var(--forti-secondary);
+            border: 1px solid var(--forti-secondary);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .wip-tag {
+            background: #ffb700;
+            color: #000;
+            font-size: 0.6rem;
+            padding: 1px 5px;
+            border-radius: 2px;
+            font-weight: 700;
+            border: none;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+
+            .category-nav {
+                gap: 15px;
+                font-size: 0.8rem;
+            }
+
+            .work-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">FORTI<span>.</span>SECURITY</div>
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Home
+        </a>
+    </header>
+
+    <!-- HERO -->
+    <div class="page-hero">
+        <h1>Anticipate. Detect. Neutralize.</h1>
+        <p>In a hyper-connected world, passive defense is obsolete. FORTI SECURITY AI operates as our dedicated Research
+            & Development unit, focusing on theoretical threat modeling and next-generation defense protocols. We study
+            the attack vectors of tomorrow to build the shields of today.</p>
+        <p style="margin-top: 20px; font-style: italic; color: var(--forti-secondary);">"Security is not a product; it
+            is a process. Our R&D division explores the intersection of Artificial Intelligence and network defense,
+            preparing for a future where threats evolve faster than human reaction times."</p>
+    </div>
+
+    <!-- STICKY NAV -->
+    <div class="category-nav">
+        <a href="#concepts" class="cat-link">Concepts</a>
+        <a href="#ai" class="cat-link">AI Defense</a>
+    </div>
+
+    <!-- SECTION 1: CONCEPTS -->
+    <section id="concepts" class="gallery-section">
+        <div class="section-header">
+            <i class="fas fa-lightbulb"></i>
+            <h2>Research Concepts</h2>
+        </div>
+        <div class="work-grid">
+            <!-- Project 1 -->
+            <div class="work-item">
+                <div class="security-visual">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <div class="card-info">
+                    <h3>CyberGuard Dashboard <span class="wip-tag">WIP</span></h3>
+                    <p>A visualization interface concept for modern Security Operations Centers (SOCs). Vision: Cutting
+                        through noise with geometric UI patterns to visualize packet loss.</p>
+                    <p style="margin-top: 10px; font-size: 0.8rem; color: #aaa;"><strong>Status:</strong> Prototyping
+                        Phase. Focusing on UI hierarchy and alert thresholds.</p>
+                    <div class="tech-tags">
+                        <span class="tag">SOC UI</span>
+                        <span class="tag">Data Viz</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Project 2 -->
+            <div class="work-item">
+                <div class="security-visual">
+                    <i class="fas fa-key"></i>
+                </div>
+                <div class="card-info">
+                    <h3>Quantum Encryption</h3>
+                    <p>Post-quantum cryptographic standards analysis and implementation concepts.</p>
+                    <div class="tech-tags">
+                        <span class="tag">Cryptography</span>
+                        <span class="tag">Math</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: AI DEFENSE -->
+    <section id="ai" class="gallery-section">
+        <div class="section-header">
+            <i class="fas fa-robot"></i>
+            <h2>AI Defense</h2>
+        </div>
+        <div class="work-grid">
+            <!-- Project 1 -->
+            <div class="work-item">
+                <div class="security-visual">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="card-info">
+                    <h3>Anomaly Detection</h3>
+                    <p>A study in algorithmic vigilance. This project explores the use of pattern recognition to
+                        identify 'Silent Intrusions'—unauthorized access attempts that mimic standard user behavior but
+                        deviate in micro-patterns.</p>
+                    <div class="tech-tags">
+                        <span class="tag">Pattern Recog</span>
+                        <span class="tag">Algorithmic</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Project 2 -->
+            <div class="work-item">
+                <div class="security-visual">
+                    <i class="fas fa-fingerprint"></i>
+                </div>
+                <div class="card-info">
+                    <h3>Behavioral Auth</h3>
+                    <p>Authentication based on user behavior patterns rather than static passwords.</p>
+                    <div class="tech-tags">
+                        <span class="tag">Machine Learning</span>
+                        <span class="tag">UX</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- FOOTER -->
+    <footer style="text-align:center; padding: 40px; border-top: 1px solid #222; color: #666;">
+        <p>FORTI SECURITY DIVISION</p>
+    </footer>
+
+</body>
+
+</html>

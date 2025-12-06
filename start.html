@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Initiate Project | FORTI Ecosystem</title>
+    <link rel="icon" href="FORTI MAIN.png" type="image/png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- 1. SHARED STYLES --- */
+        :root {
+            --forti-primary: #0c5bab;
+            --forti-secondary: #1c8fed;
+            --forti-success: #00d26a;
+            /* Success Green */
+            --forti-dark: #0a0a0a;
+            --forti-dark-accent: #151515;
+            --forti-light: #f4f4f4;
+            --forti-gray: #888888;
+            --font-main: 'Poppins', sans-serif;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--forti-dark);
+            color: var(--forti-light);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        /* --- 2. HEADER --- */
+        header {
+            padding: 30px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--forti-secondary);
+        }
+
+        .back-link {
+            font-size: 0.9rem;
+            color: var(--forti-gray);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .back-link:hover {
+            color: var(--forti-secondary);
+        }
+
+        /* --- 3. FORM INTERFACE --- */
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .form-wrapper {
+            width: 100%;
+            max-width: 700px;
+            background: var(--forti-dark-accent);
+            padding: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+        }
+
+        /* Tech Corners */
+        .form-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 30px;
+            height: 30px;
+            border-top: 2px solid var(--forti-primary);
+            border-left: 2px solid var(--forti-primary);
+        }
+
+        .form-wrapper::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 30px;
+            height: 30px;
+            border-bottom: 2px solid var(--forti-primary);
+            border-right: 2px solid var(--forti-primary);
+        }
+
+        .header-text {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .header-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header-text p {
+            color: var(--forti-gray);
+        }
+
+        /* Form Styling */
+        form {
+            display: grid;
+            gap: 20px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        label {
+            font-size: 0.85rem;
+            color: var(--forti-gray);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        input,
+        select,
+        textarea {
+            background: #0f0f0f;
+            border: 1px solid #333;
+            padding: 15px;
+            color: var(--forti-light);
+            font-family: var(--font-main);
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--forti-secondary);
+            box-shadow: 0 0 10px rgba(28, 143, 237, 0.1);
+        }
+
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 20px;
+        }
+
+        .btn-submit {
+            background: var(--forti-primary);
+            color: white;
+            padding: 18px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: var(--transition);
+        }
+
+        .btn-submit:hover {
+            background: var(--forti-secondary);
+            transform: translateY(-2px);
+        }
+
+        /* --- 4. SUCCESS MESSAGE (Hidden by default) --- */
+        #form-status {
+            display: none;
+            /* Hidden initially */
+            text-align: center;
+            padding: 40px 0;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            color: var(--forti-success);
+            margin-bottom: 20px;
+        }
+
+        .success-title {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--forti-light);
+        }
+
+        .success-text {
+            color: var(--forti-gray);
+            margin-bottom: 30px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            .row {
+                grid-template-columns: 1fr;
+            }
+
+            .form-wrapper {
+                padding: 30px 20px;
+            }
+
+            .header-text h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">FORTI<span>.</span></div>
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Return to Ecosystem
+        </a>
+    </header>
+
+    <div class="container">
+        <div class="form-wrapper">
+
+            <div id="form-container">
+                <div class="header-text">
+                    <h1>Initialize Project</h1>
+                    <p>Tell us about your vision. We handle the engineering.</p>
+                </div>
+
+                <form id="project-form" action="https://formspree.io/f/movglezr" method="POST">
+                    <div class="row">
+                        <div class="input-group">
+                            <label for="name">NAME</label>
+                            <input type="text" id="name" name="name" placeholder="John Doe" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="email">EMAIL</label>
+                            <input type="email" id="email" name="email" placeholder="john@company.com" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-group">
+                            <label for="company">COMPANY / ORG</label>
+                            <input type="text" id="company" name="company" placeholder="Optional">
+                        </div>
+                        <div class="input-group">
+                            <label for="service">DIVISION REQUIRED</label>
+                            <select id="service" name="service">
+                                <option value="Forti Design">Forti Design (Branding/UI)</option>
+                                <option value="Forti Security AI">Forti Security AI</option>
+                                <option value="Forti Tech">Forti Tech (Software/Web)</option>
+                                <option value="Forti Core">Forti Core (Strategy)</option>
+                                <option value="Other">Other / General Inquiry</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="message">PROJECT DETAILS</label>
+                        <textarea id="message" name="message" rows="5"
+                            placeholder="Describe the scope, timeline, and goals..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit" id="submit-btn">Initiate Protocol</button>
+                </form>
+            </div>
+
+            <div id="form-status">
+                <i class="fas fa-check-circle success-icon"></i>
+                <h2 class="success-title">Transmission Received</h2>
+                <p class="success-text">Protocol initiated. Our team is analyzing your data packet.</p>
+                <a href="index.html" class="btn-submit"
+                    style="display:inline-block; padding: 12px 30px; font-size: 0.9rem;">Return to Base</a>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById("project-form");
+        const formContainer = document.getElementById("form-container");
+        const formStatus = document.getElementById("form-status");
+        const submitBtn = document.getElementById("submit-btn");
+
+        async function handleSubmit(event) {
+            event.preventDefault(); // Stop standard redirect
+
+            const status = document.getElementById("form-status");
+            const data = new FormData(event.target);
+
+            // Change button text to indicate loading
+            submitBtn.innerHTML = "Transmitting...";
+            submitBtn.style.opacity = "0.7";
+
+            fetch(event.target.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    // SUCCESS: Hide form, Show message
+                    form.reset(); // Clear all inputs
+                    formContainer.style.display = "none";
+                    formStatus.style.display = "block";
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            alert(data["errors"].map(error => error["message"]).join(", "));
+                        } else {
+                            alert("System Error. Transmission failed.");
+                        }
+                    });
+                    // Reset button if error
+                    submitBtn.innerHTML = "Initiate Protocol";
+                    submitBtn.style.opacity = "1";
+                }
+            }).catch(error => {
+                alert("Network Error. Transmission failed.");
+                submitBtn.innerHTML = "Initiate Protocol";
+                submitBtn.style.opacity = "1";
+            });
+        }
+
+        form.addEventListener("submit", handleSubmit);
+    </script>
+
+</body>
+
+</html>

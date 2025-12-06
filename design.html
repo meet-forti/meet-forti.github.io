@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Architecture | FORTI Design</title>
+    <link rel="icon" href="FORTI design.png" type="image/png">
+
+    <!-- Typography & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- 1. CORE VARIABLES (Same as Main Site) --- */
+        :root {
+            --forti-primary: #0c5bab;
+            --forti-secondary: #1c8fed;
+            --forti-dark: #0a0a0a;
+            --forti-dark-accent: #151515;
+            --forti-light: #f4f4f4;
+            --forti-gray: #888888;
+            --font-main: 'Poppins', sans-serif;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--forti-dark);
+            color: var(--forti-light);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        /* --- 2. HEADER --- */
+        header {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background: var(--forti-dark);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--forti-secondary);
+        }
+
+        .back-link {
+            font-size: 0.9rem;
+            color: var(--forti-gray);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .back-link:hover {
+            color: var(--forti-secondary);
+        }
+
+        /* --- 3. HERO --- */
+        .page-hero {
+            padding: 80px 5%;
+            text-align: center;
+            background: radial-gradient(circle at center, #111e2e 0%, var(--forti-dark) 70%);
+        }
+
+        .page-hero h1 {
+            font-size: 3rem;
+            background: linear-gradient(to right, #fff, var(--forti-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .page-hero p {
+            color: var(--forti-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- 4. STICKY CATEGORY NAV --- */
+        .category-nav {
+            position: sticky;
+            top: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 100;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .cat-link {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--forti-gray);
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+
+        .cat-link:hover,
+        .cat-link.active {
+            color: var(--forti-secondary);
+        }
+
+        /* --- 5. GALLERY SECTIONS --- */
+        .gallery-section {
+            padding: 80px 5%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        .section-header {
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-header i {
+            color: var(--forti-primary);
+            font-size: 1.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* --- GRID SYSTEM --- */
+        .work-grid {
+            display: grid;
+            gap: 25px;
+        }
+
+        /* CARD STYLING */
+        .work-item {
+            position: relative;
+            background: var(--forti-dark-accent);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            overflow: hidden;
+            group: 1;
+            cursor: pointer;
+        }
+
+        /* The Image Container */
+        .work-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            display: block;
+            background: #222;
+            /* Placeholder color */
+        }
+
+        /* Hover Effect */
+        .work-item:hover .work-img {
+            transform: scale(1.05);
+        }
+
+        .work-item:hover {
+            border-color: var(--forti-secondary);
+        }
+
+        .work-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, #000 0%, transparent 100%);
+            padding: 20px;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .work-item:hover .work-overlay {
+            opacity: 1;
+        }
+
+        /* --- SPECIFIC LAYOUTS --- */
+
+        /* 1. LOGOS (Square Grid) */
+        #logos .work-grid {
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        }
+
+        #logos .work-item {
+            aspect-ratio: 1 / 1;
+        }
+
+        /* 2. POSTERS (Vertical Grid) */
+        #posters .work-grid {
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        }
+
+        #posters .work-item {
+            aspect-ratio: 2 / 3;
+        }
+
+        /* Standard Poster Ratio */
+
+        /* 3. THUMBNAILS (Wide Grid) */
+        #thumbnails .work-grid {
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        }
+
+        #thumbnails .work-item {
+            aspect-ratio: 16 / 9;
+        }
+
+        /* YouTube Ratio */
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+
+            .category-nav {
+                gap: 15px;
+                font-size: 0.8rem;
+            }
+
+            .work-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Stack on mobile */
+            .work-item {
+                aspect-ratio: auto !important;
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">FORTI<span>.</span>DESIGN</div>
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Home
+        </a>
+    </header>
+
+    <!-- HERO -->
+    <div class="page-hero">
+        <h1>Visual Architecture</h1>
+        <p>A collection of high-precision brand assets, marketing materials, and digital touchpoints.</p>
+    </div>
+
+    <!-- STICKY NAV -->
+    <div class="category-nav">
+        <a href="#logos" class="cat-link">Logos</a>
+        <a href="#posters" class="cat-link">Posters</a>
+        <a href="#thumbnails" class="cat-link">Thumbnails</a>
+    </div>
+
+    <!-- SECTION 1: LOGOS -->
+    <section id="logos" class="gallery-section">
+        <div class="section-header">
+            <i class="fas fa-vector-square"></i>
+            <h2>Identity / Logos</h2>
+        </div>
+        <div class="work-grid">
+            <!-- Logo Item 1 -->
+            <div class="work-item">
+                <!-- Replace src with your image -->
+                <img src="https://via.placeholder.com/400x400/151515/0c5bab?text=LOGO+1" class="work-img"
+                    alt="Logo Design">
+                <div class="work-overlay">
+                    <h4>Client A Rebrand</h4>
+                </div>
+            </div>
+            <!-- Logo Item 2 -->
+            <div class="work-item">
+                <img src="https://via.placeholder.com/400x400/151515/0c5bab?text=LOGO+2" class="work-img"
+                    alt="Logo Design">
+                <div class="work-overlay">
+                    <h4>Tech Startup Icon</h4>
+                </div>
+            </div>
+            <!-- Logo Item 3 -->
+            <div class="work-item">
+                <img src="https://via.placeholder.com/400x400/151515/0c5bab?text=LOGO+3" class="work-img"
+                    alt="Logo Design">
+                <div class="work-overlay">
+                    <h4>Personal Monogram</h4>
+                </div>
+            </div>
+            <!-- Add more div.work-item here -->
+        </div>
+    </section>
+
+    <!-- SECTION 2: POSTERS -->
+    <section id="posters" class="gallery-section">
+        <div class="section-header">
+            <i class="fas fa-file-image"></i>
+            <h2>Print / Posters</h2>
+        </div>
+        <div class="work-grid">
+            <!-- Poster Item 1 -->
+            <div class="work-item">
+                <img src="https://via.placeholder.com/400x600/151515/1c8fed?text=POSTER+1" class="work-img"
+                    alt="Poster Design">
+                <div class="work-overlay">
+                    <h4>Event Flyer</h4>
+                </div>
+            </div>
+            <!-- Poster Item 2 -->
+            <div class="work-item">
+                <img src="https://via.placeholder.com/400x600/151515/1c8fed?text=POSTER+2" class="work-img"
+                    alt="Poster Design">
+                <div class="work-overlay">
+                    <h4>Product Launch</h4>
+                </div>
+            </div>
+            <!-- Poster Item 3 -->
+            <div class="work-item">
+                <img src="https://via.placeholder.com/400x600/151515/1c8fed?text=POSTER+3" class="work-img"
+                    alt="Poster Design">
+                <div class="work-overlay">
+                    <h4>Concert Series</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: THUMBNAILS -->
+    <section id="thumbnails" class="gallery-section">
+        <div class="section-header">
+            <i class="fas fa-play-circle"></i>
+            <h2>Digital / Thumbnails</h2>
+        </div>
+        <div class="work-grid">
+            <!-- Thumb Item 1 -->
+            <div class="work-item">
+                <img src="https://via.placeholder.com/640x360/151515/ffffff?text=THUMB+1" class="work-img"
+                    alt="Thumbnail Design">
+                <div class="work-overlay">
+                    <h4>High CTR Concept</h4>
+                </div>
+            </div>
+            <!-- Thumb Item 2 -->
+            <div class="work-item">
+                <img src="https://via.placeholder.com/640x360/151515/ffffff?text=THUMB+2" class="work-img"
+                    alt="Thumbnail Design">
+                <div class="work-overlay">
+                    <h4>Gaming Content</h4>
+                </div>
+            </div>
+            <!-- Thumb Item 3 -->
+            <div class="work-item">
+                <img src="https://via.placeholder.com/640x360/151515/ffffff?text=THUMB+3" class="work-img"
+                    alt="Thumbnail Design">
+                <div class="work-overlay">
+                    <h4>Tech Review</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="text-align:center; padding: 40px; border-top: 1px solid #222; color: #666;">
+        <p>FORTI DESIGN DIVISION</p>
+    </footer>
+
+</body>
+
+</html>
